@@ -1,0 +1,248 @@
+@import './fonts/fonts.css';
+
+*,
+*::after,
+*::before {
+	box-sizing: border-box;
+}
+
+:root {
+	--very-dark-grayish-blue: hsl(217, 19%, 35%);
+	--desaturated-dark-blue: hsl(214, 17%, 51%);
+	--grayish-blue: hsl(212, 23%, 69%);
+	--light-grayish-blue: rgb(236, 242, 248);
+
+	--border-radius: 1.2rem;
+}
+
+html {
+	font-size: 62.5%;
+}
+
+body {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	min-height: 100vh;
+	margin: 0;
+	font-family: 'Manrope', sans-serif;
+	background-color: var(--light-grayish-blue);
+}
+
+.card {
+	max-width: 35rem;
+	background-color: white;
+	border-radius: var(--border-radius);
+}
+
+.card-img {
+	background-image: url('images/drawers.jpg');
+	background-size: cover;
+	width: 100%;
+	height: 25em;
+	border-radius: var(--border-radius) var(--border-radius) 0 0;
+}
+
+.card main {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	border-radius: 0 0 var(--border-radius) var(--border-radius);
+	font-size: 1.2rem;
+}
+
+.card-body {
+	padding: 2rem 3rem 0.8rem;
+}
+
+.card-title {
+	font-size: 1.6em;
+	font-weight: 700;
+	color: var(--very-dark-grayish-blue);
+	line-height: 1.5;
+	letter-spacing: 0.3px;
+	margin-bottom: 1em;
+}
+
+.card-text {
+	font-size: 1.2em;
+	font-weight: 500;
+	color: var(--desaturated-dark-blue);
+	line-height: 1.6;
+	letter-spacing: 0.7px;
+}
+
+.contact {
+	position: relative;
+	display: flex;
+	align-items: center;
+	width: 100%;
+	padding: 1rem 3rem 2rem;
+}
+
+.author {
+	margin: auto 2em;
+}
+
+.contact img {
+	border-radius: 50%;
+	width: 4em;
+	height: 4em;
+}
+
+.author h3 {
+	margin: 0;
+	color: var(--very-dark-grayish-blue);
+}
+
+.author time {
+	color: var(--desaturated-dark-blue);
+}
+
+.arrow-btn {
+	border-radius: 50%;
+	background: var(--light-grayish-blue);
+	height: 3.2em;
+	width: 3.2em;
+	cursor: pointer;
+
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	margin-left: auto;
+	z-index: 10;
+}
+
+.arrow-btn img {
+	height: 1.4em;
+	width: 1.4em;
+}
+
+.arrow-btn:active {
+	transform: scale(0.98);
+}
+
+.arrow-btn:hover {
+	background-color: var(--grayish-blue);
+}
+
+.arrow-btn:hover img {
+	filter: brightness(100);
+}
+
+.contact .share {
+	position: absolute;
+	display: flex;
+	justify-content: space-evenly;
+	align-items: center;
+	top: 0;
+	bottom: 0;
+	left: 0;
+
+	background-color: var(--very-dark-grayish-blue);
+	width: 100%;
+	border-radius: 0 0 var(--border-radius) var(--border-radius);
+	padding-right: 10em;
+	padding-left: 2em;
+
+	visibility: hidden;
+	opacity: 0;
+	transition: 0.25s all ease;
+	transition-delay: 0.25s;
+}
+
+.share p {
+	font-size: 1.6em;
+	color: var(--grayish-blue);
+}
+
+.contact .share ul {
+	margin: 0;
+	list-style: none;
+	display: flex;
+	align-items: center;
+}
+
+.share li:not(:last-child) {
+	margin-right: 1.6em;
+}
+
+.share li a {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.share li img {
+	height: 2.2em;
+	width: 2.4em;
+}
+
+.arrow-btn:hover ~.share,
+.share:hover {
+	visibility: visible;
+	opacity: 1;
+}
+
+.share li:hover {
+	transform: scale(1.1);
+}
+
+@media (min-width: 875px) {
+	.card {
+		max-width: 80rem;
+		max-height: 30rem;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+	}
+	
+	.card-img {
+		background-size: cover;
+		background-repeat: no-repeat;
+		flex: 1;
+		height: 30rem;
+		border-radius: var(--border-radius) 0 0 var(--border-radius);
+	}
+	
+	.card main {
+		flex: 1.6;
+		border-radius: 0 var(--border-radius) var(--border-radius) 0;
+		font-size: 1.15rem;
+		padding: 0 1.5rem;
+	}
+
+	.contact .share {
+		--scale: 0;
+		--border-radius: 1rem;
+
+		top: -5em;
+		left: 29.8em;
+	
+		border-radius: var(--border-radius);
+		font-size:.9em;
+		width: max-content;
+		height: 5em;
+		padding: .8em 2em;
+
+		transform: scale(var(--scale));
+		transition: 0.25s transform ease;
+		transform-origin: bottom center;
+	}
+
+	.contact .share::after {
+		position: absolute;
+		top: 100%;
+		left: 50%;
+		transform: translateX(-50%);
+		content: '';
+		border: 10px solid transparent;
+		border-top-color: var(--very-dark-grayish-blue);
+	}
+
+	.arrow-btn:hover ~.share,
+	.share:hover {
+		--scale: 1;
+	}
+}
